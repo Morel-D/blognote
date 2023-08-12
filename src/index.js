@@ -4,9 +4,9 @@ import './index.css';
 import App from './App';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import blogReducer from './components/redux/reducers/blogReducer';
+import myReducers from './components/redux/reducers/combineReducers';
 
-const store = createStore(blogReducer);
+const store = createStore(myReducers);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
