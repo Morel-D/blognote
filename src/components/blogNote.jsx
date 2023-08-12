@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { decrement, increment } from "./redux/actions/blogAction";
+import { decrement, increment, reset } from "./redux/actions/blogAction";
 
 const BlogNoate = () => {
 
@@ -18,6 +18,9 @@ const BlogNoate = () => {
                         <div className="row">
                             <div className="col">
                                 <button className="btn btn-warning" onClick={() => dispatch(increment())}>Add Note</button>
+                            </div>
+                            <div className="col">
+                                <button className="btn btn-dark" onClick={() => dispatch(reset())}>Reset</button>
                             </div>
                             <div className="col">
                                <button className="btn btn-danger" onClick={ () => dispatch(decrement())}>Delete Note</button>
