@@ -5,8 +5,10 @@ import App from './App';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import myReducers from './components/redux/reducers/combineReducers';
+import thunk from 'redux-thunk';
 
-const store = createStore(myReducers);
+const applyMiddleware = redux.applyMiddleware;
+const store = createStore(myReducers, applyMiddleware(thunk));
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
