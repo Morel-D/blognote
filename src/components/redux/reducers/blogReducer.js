@@ -9,7 +9,7 @@ const blogReducer = (state = 0, action) => {
             return state - 1;
 
         case "RESET_BLOG":
-            return state = 0;    
+            return state == 0;    
         
         default:
             return state;
