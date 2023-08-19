@@ -1,10 +1,12 @@
 import { combineReducers } from "@reduxjs/toolkit";
 import blogReducer from "./blogReducer";
+import requestReducer from "./requestReducer";
 
 
 const myReducers = combineReducers(
     {
-        blog: blogReducer
+        blog: blogReducer,
+        blogRequest: requestReducer
     }
 );
 
