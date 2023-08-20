@@ -1,17 +1,26 @@
 import { useDispatch, useSelector } from "react-redux";
 import { decrement, increment, reset } from "./redux/actions/blogAction";
+import { useEffect } from "react";
+import { fetchData } from "./redux/actions/requestAction";
 
 const BlogNoate = () => {
 
     const blog = useSelector(state => state.blog);
-
+    const blogRequest = useSelector(state => state.blogRequest);
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fetchData());
+    }, [dispatch]);
+
+    console.log(" Data :"+fetchData());
+    console.log(blogRequest.data);
 
 
     return ( 
         <div className="blog-note">
             <div className="container d-flex justify-content-center mt-5">
-                <div className="container mt-5 d-flex justify-content-center text-center">
+                <div className="container mt-5 d-flex justify-content-center text-center  d-flex gap-3">
                     <div className="card col-5 p-5">
                         <h2 className="text-secondary">Number of blog - {blog}</h2>
                         <br />
@@ -26,6 +35,12 @@ const BlogNoate = () => {
                                <button className="btn btn-danger" onClick={ () => dispatch(decrement())}>Delete Note</button>
                             </div>
                         </div>
+                    </div>
+                    <br />
+                    <div className="card col-5 p-5">
+                        {blogRequest.map((blogs) => (
+                            <li key={blogs.id}>{blogs.title}</li>
+                        ))}
                     </div>
                 </div>
             </div>

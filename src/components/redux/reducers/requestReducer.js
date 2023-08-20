@@ -1,7 +1,7 @@
 const initialState = {
     loading: true,
     data: [],
-    errror: ''
+    error: ''
 };
 
 
@@ -28,6 +28,9 @@ const requestReducer = (state = initialState, action) =>
                 data: [],
                 error: action.payload
             }
+
+        default:
+            return state;
         
     }
 }
