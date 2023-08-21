@@ -6,15 +6,14 @@ import { fetchData } from "./redux/actions/requestAction";
 const BlogNoate = () => {
 
     const blog = useSelector(state => state.blog);
-    const blogRequest = useSelector(state => state.blogRequest);
+    const blogRequest = useSelector(state => state.blogRequest.data);
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(fetchData());
-    }, [dispatch]);
+    }, [blogRequest]);
 
-    console.log(" Data :"+fetchData());
-    console.log(blogRequest.data);
+    console.log("The Data is: ", blogRequest.title);
 
 
     return ( 
@@ -38,9 +37,7 @@ const BlogNoate = () => {
                     </div>
                     <br />
                     <div className="card col-5 p-5">
-                        {blogRequest.map((blogs) => (
-                            <li key={blogs.id}>{blogs.title}</li>
-                        ))}
+                        {blogRequest.title}
                     </div>
                 </div>
             </div>
