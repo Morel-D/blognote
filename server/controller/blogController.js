@@ -28,6 +28,7 @@ module.exports =
 {
     addBlog,
     getBlog,
+    getSingleBlog,
     deleteBlog,
     updateBlog
 }
