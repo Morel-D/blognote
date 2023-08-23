@@ -1,4 +1,4 @@
-import BlogNoate from "./components/blogNote";
+import BlogNote from "./components/view/blogNote";
 
 function App() {
   return (
@@ -6,7 +6,7 @@ function App() {
       <header className="App-header">
       </header>
        <div className="body">
-         <BlogNoate />
+         <BlogNote />
        </div>
     </div>
   );
