@@ -10,8 +10,8 @@ const BlogNote = () => {
     
     
     useEffect(() => {
-        dispatch(getBlogs());
-    }, [getBlogs()]);
+        dispatch(getBlogs);
+    }, [getBlogs]);
 
     console.log('Data ', blog);
 

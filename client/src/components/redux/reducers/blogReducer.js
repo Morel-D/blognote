@@ -11,8 +11,7 @@ const initialState = [];
 const blogReducer = (state = initialState, action) =>
 {
     const {type, payload} = action;
-    
-    
+
     switch(type) 
     {
         case CREATE_BLOG:
@@ -24,6 +23,7 @@ const blogReducer = (state = initialState, action) =>
         default:
             return state;
     }
+    
 };
 
 export default blogReducer;
