@@ -1,26 +1,26 @@
 import http from "../service/http-common";
 
-const getBlog = () => 
+const get = () => 
 {
     return http.get('/')
 }
 
-const getSingleBlog = (id) => 
+const getID = (id) => 
 {
     return http.get('/edit/'+id)
 }
 
-const addBlog = (data) => 
+const add = (data) => 
 {
     return http.post('/add', data)
 }
 
-const updateBlog = (id, data) => 
+const update = (id, data) => 
 {
     return http.put('/edit/'+id, data)
 }
 
-const deleteBlog = (id) =>
+const remove = (id) =>
 {
     return http.delete('/'+id)
 }
@@ -28,7 +28,7 @@ const deleteBlog = (id) =>
 
 const blogService = 
 {
-    getBlog, getSingleBlog, addBlog, updateBlog, deleteBlog
+    get, getID, add, update, remove
 }
 
 export default blogService;
