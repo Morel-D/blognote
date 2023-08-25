@@ -1,4 +1,19 @@
-const BlogNoate = () => {
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { getBlogs } from "../redux/action/blogAction";
+
+const BlogNote = () => {
+
+    const blog = useSelector(state => state.blog);
+    const dispatch = useDispatch();
+    
+    
+    useEffect(() => {
+        dispatch(getBlogs());
+    }, [getBlogs()]);
+
+    console.log('Data ', blog);
 
 
     return ( 
@@ -49,4 +64,4 @@ const BlogNoate = () => {
      );
 }
  
-export default BlogNoate;
+export default BlogNote;

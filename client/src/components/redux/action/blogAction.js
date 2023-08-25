@@ -17,7 +17,6 @@ export const addBlog = (title, content) => async (dispatch) =>
             type: CREATE_BLOG,
             payload: res.data
         })
-
         return Promise.resolve(res.data);
     } catch(error) {
         return Promise.reject(error)
@@ -35,6 +34,7 @@ export const getBlogs = () => async (dispatch) =>
                 type: GET_BLOG,
                 paylaod: res.data
             }
+
         );
     } catch(err) {
         console.log(err)
