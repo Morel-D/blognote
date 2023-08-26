@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { getBlogs } from "../redux/action/blogAction";
+import { Link } from "react-router-dom";
 
 const BlogNote = () => {
 
@@ -10,10 +11,10 @@ const BlogNote = () => {
     
     
     useEffect(() => {
-        dispatch(getBlogs);
-    }, [getBlogs]);
+        dispatch(getBlogs());
+    }, [getBlogs()]);
 
-    console.log('Data ', blog);
+    // console.log('Data ', blog);
 
 
     return ( 
@@ -28,7 +29,9 @@ const BlogNote = () => {
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">      
                         </ul>
 
-                          <button class="btn btn-outline-success" type="submit">Add Blog</button>
+                         <Link to="/add">
+                           <button class="btn btn-outline-success" type="submit">Add Blog</button>
+                         </Link>
 
                     </div>
                 </div>

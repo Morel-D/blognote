@@ -28,6 +28,7 @@ export const getBlogs = () => async (dispatch) =>
 {
     try {
         const res = await blogService.get();
+        // console.log("The get acion here is ", res.data);
 
         dispatch(
             {

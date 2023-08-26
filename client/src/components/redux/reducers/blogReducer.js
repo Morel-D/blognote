@@ -1,3 +1,4 @@
+import axios from "axios";
 import {
     CREATE_BLOG,
     GET_BLOG,
@@ -5,6 +6,7 @@ import {
     UPDATE_BLOG,
     DELETE_BLOG
 } from "../action/types";
+
 
 const initialState = [];
 
@@ -18,7 +20,10 @@ const blogReducer = (state = initialState, action) =>
             return [...state, payload];
 
         case GET_BLOG:
-            return payload;
+            return {
+                ...state,
+                payload
+            };
         
         default:
             return state;
