@@ -28,15 +28,15 @@ export const getBlogs = () => async (dispatch) =>
 {
     try {
         const res = await blogService.get();
-        // console.log("The get acion here is ", res.data);
-
-        dispatch(
+        
+        return dispatch(
             {
                 type: GET_BLOG,
                 paylaod: res.data
             }
-
         );
+        
+
     } catch(err) {
         console.log(err)
     }

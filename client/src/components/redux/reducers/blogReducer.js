@@ -12,6 +12,7 @@ const initialState = [];
 
 const blogReducer = (state = initialState, action) =>
 {
+
     const {type, payload} = action;
 
     switch(type) 
