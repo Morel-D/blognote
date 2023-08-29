@@ -1,30 +1,7 @@
-import {
-    CREATE_BLOG,
-    GET_BLOG,
-    GET_SINGLE_BLOG,
-    UPDATE_BLOG,
-    DELETE_BLOG
-} from "../redux/action/types";
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 
-import { getBlogs } from "../redux/action/blogAction";
 import { Link } from "react-router-dom";
 
 const BlogNote = () => {
-
-
-    const blog = useSelector(state => state.blog);
-    const dispatch = useDispatch();
-    
-    
-    useEffect(() => {
-        dispatch(getBlogs());
-    }, []);
-
-
-
-
 
     return ( 
         <div className="blog-note">
