@@ -1,3 +1,4 @@
+// not been used
 let actionBlog = 
 {
     addBlog: function(content)
