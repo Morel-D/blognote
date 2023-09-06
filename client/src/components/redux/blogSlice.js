@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getBlogList } from "./action";
+import { useDispatch } from "react-redux";
 
 
 const initiialState = 
@@ -10,6 +11,7 @@ const initiialState =
     errorMessage: null
 }
 
+
 export const blogSlice = createSlice(
     {
         name: 'blog',
@@ -19,18 +21,17 @@ export const blogSlice = createSlice(
             {
                 state.isLoading = true;
             },
-            [getBlogList.fulfilled]: (state) => 
+            [getBlogList.fulfilled]: (state, action) => 
             {
                 state.isLoading = false;
                 state.isSuccess = true;
-                console.log('This is the reducer payload ', state.payload);
-                state.data = state.payload;
+                state.data = action.payload;
             },
-            [getBlogList.rejected]: (state) =>
+            [getBlogList.rejected]: (state, action) =>
             {
                 state.isLoading = false;
                 state.isSuccess = false;
-                state.errorMessage = state.payload
+                state.errorMessage = action.payload
             }
         }
     }

@@ -1,20 +1,19 @@
-import { Link, json } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { getBlogList } from "../redux/action";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
 const BlogNote = () => {
 
-    // const [list, setList] = useState();
-    const blog = useSelector(state => state.blog);
+    const blogs = useSelector(state => state.blog.data);
     const dispatch = useDispatch();
 
     // ======> print the results
-    console.log("The data here a the view is ", blog);
+    // console.log("The data here a the view is ", blogs);
 
     useEffect(() => {
         dispatch(getBlogList());
-    }, [dispatch])
+    }, [dispatch]);
 
     return ( 
         <div className="blog-note">
@@ -37,29 +36,40 @@ const BlogNote = () => {
             </nav>
             <br />
             <div className="p-5">
-                <div className="card col-3 p-4">
-                    <h4 className="text-start">Hello world</h4>
-                    <hr />
-                    <p className="lead">This is my first time</p>
-                    <hr />
-                    <div className="row">
-                        <div className="col text-start">
-                            <div className="row">
-                                <div className="col col-4">
-                                   <button className="btn btn-dark">
-                                   <i class="bi bi-trash"></i>
-                                   </button>
-                                </div>
-                                <div className="col text-start">
-                                    <button className="btn btn-dark"> 
-                                    <i class="bi bi-eye"></i>
-                                    </button>
-                                </div>
-
+                <div className="row">
+                   
+                    {blogs && blogs.map((item) =>
+            {
+                return <div className="col">
+                
+                <div className="card p-4" key={item.id}>
+                <h4 className="text-start">{item.title}</h4>
+                <hr />
+                <p className="lead">{item.content}</p>
+                <hr />
+                <div className="row">
+                    <div className="col text-start">
+                        <div className="row">
+                            <div className="col col-4">
+                               <button className="btn btn-dark">
+                               <i class="bi bi-trash"></i>
+                               </button>
                             </div>
+                            <div className="col text-start">
+                                <button className="btn btn-dark"> 
+                                <i class="bi bi-eye"></i>
+                                </button>
+                            </div>
+
                         </div>
-                        <div className="col text-end"><i>12:10</i></div>
                     </div>
+                    <div className="col text-end"><i>12:10</i></div>
+                </div>
+            </div>
+            </div>
+            }
+            )}
+                   
                 </div>
             </div>
       </div>
