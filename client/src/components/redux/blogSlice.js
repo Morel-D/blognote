@@ -10,7 +10,6 @@ const initiialState =
     errorMessage: null
 }
 
-
 export const blogSlice = createSlice(
     {
         name: 'blog',
@@ -24,6 +23,7 @@ export const blogSlice = createSlice(
             {
                 state.isLoading = false;
                 state.isSuccess = true;
+                console.log('This is the reducer payload ', state.payload);
                 state.data = state.payload;
             },
             [getBlogList.rejected]: (state) =>

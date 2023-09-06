@@ -1,13 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link, json } from "react-router-dom";
 import { getBlogList } from "../redux/action";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const BlogNote = () => {
 
+    // const [list, setList] = useState();
     const blog = useSelector(state => state.blog);
     const dispatch = useDispatch();
 
+    // ======> print the results
     console.log("The data here a the view is ", blog);
 
     useEffect(() => {
