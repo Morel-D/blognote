@@ -1,21 +1,13 @@
-// not been used
-let actionBlog = 
-{
-    addBlog: function(content)
-    {
-        return {
-            type: 'ADD_BLOG',
-            content: content
-        }
-    },
+import axios from"axios";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 
-    deleteBlog: function(id)
-    {
-        return {
-            type: 'DELETE_BLOG',
-            id: id
-        }
-    }
-}
-
-export default actionBlog;
+export const getBlogList = createAsyncThunk('getBlogList', async () => {
+    try{
+        const response = await axios.get('http://localhost:5000/Blog');
+    const data = await response.data;
+    console.log('The data has been fetch successfully on the action.js ', response.data);
+    return data;
+    }catch(error)  {
+        console.log('Something is wrong on the action.js part ', error.message); 
+    };
+});

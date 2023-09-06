@@ -11,8 +11,7 @@ function App() {
         </header>
          <div className="body">
           <Routes>
-             {/* <Route path="/" element={<BlogNote />} /> */}
-             <Route path="/" element={<Blog />} />
+             <Route path="/" element={<BlogNote />} />
              <Route path="add/" element={<AddBlog />} />
           </Routes>
 
