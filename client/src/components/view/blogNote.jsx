@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { getBlogList } from "../redux/action";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 const BlogNote = () => {
 
@@ -40,9 +40,9 @@ const BlogNote = () => {
                    
                     {blogs && blogs.map((item) =>
             {
-                return <div className="col">
+                return <div className="col" key={item._id}>
                 
-                <div className="card p-4" key={item.id}>
+                <div className="card p-4">
                 <h4 className="text-start">{item.title}</h4>
                 <hr />
                 <p className="lead">{item.content}</p>

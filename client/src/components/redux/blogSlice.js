@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getBlogList } from "./action";
-import { useDispatch } from "react-redux";
+import { getBlogList, addBlogList } from "./action";
 
 
 const initiialState = 
@@ -32,7 +31,21 @@ export const blogSlice = createSlice(
                 state.isLoading = false;
                 state.isSuccess = false;
                 state.errorMessage = action.payload
+            },
+
+            [addBlogList.fulfilled]: (state, action) =>
+            {
+                state.isLoading = false;
+                state.isSuccess = true;
+                state.data.push(action.payload)
+            },
+            [addBlogList.rejected]: (state, action) => 
+            {
+                state.isLoading = false;
+                state.isSuccess = false;
+                state.errorMessage = action.payload
             }
+            
         }
     }
 )
