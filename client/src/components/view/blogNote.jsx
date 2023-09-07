@@ -40,7 +40,7 @@ const BlogNote = () => {
                    
                     {blogs && blogs.map((item) =>
             {
-                return <div className="col" key={item._id}>
+                return <div className="col col-4 p-4" key={item._id}>
                 
                 <div className="card p-4">
                 <h4 className="text-start">{item.title}</h4>

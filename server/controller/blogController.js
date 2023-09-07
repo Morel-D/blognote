@@ -11,6 +11,7 @@ const addBlog = (req, res) =>
     Blog.find().then((results) => {
         res.json(results);
     }).catch((error) => {
+        console.log('There is an error at the server part ', error.message)
         res.json(error.message)
     })
 }
