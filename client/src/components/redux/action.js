@@ -35,4 +35,15 @@ export const getSingleBlog = createAsyncThunk('getSingleBlog', async (id) => {
     }
 })
 
+export const deleteSingleBlog = createAsyncThunk('deleteSingleBlog', async (id) => {
+    try {
+        const response = await axios.delete('http://localhost:5000/Blog/'+id);
+        const results = await response.data;
+        console.log('Single data has been deleted in the action.js : ', results);
+        return results
+    }catch (error) {
+        console.log('Something went wrong wrong in the action.js : ', error.message);
+    }
+})
+
 

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getBlogList, addBlogList, getSingleBlog } from "./action";
+import { getBlogList, addBlogList, getSingleBlog, deleteSingleBlog } from "./action";
 
 
 const initiialState = 
@@ -53,8 +53,27 @@ export const blogSlice = createSlice(
 
             [getSingleBlog.fulfilled]: (state, action) => 
             {
+                state.isLoading = false;
+                state.isSuccess = true;
                 const id = action.payload;
                 state.data.find(item => item.id === id);
+            },
+
+            [getSingleBlog.rejected]: (state, action) =>
+            {
+                state.isLoading = false;
+                state.isSuccess = false;
+                state.errorMessage = action.payload;
+            },
+
+            // DELETE single data
+
+            [deleteSingleBlog.fulfilled]: (state, action) => 
+            {
+                state.isLoading = false;
+                state.isSuccess = true;
+                const id = action.payload;
+                state.data.filter(item => item.id !== id)
             }
         }
     }

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { getBlogList, getSingleBlog } from "../redux/action";
+import { getBlogList, getSingleBlog, deleteSingleBlog } from "../redux/action";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
@@ -13,17 +13,26 @@ const BlogNote = () => {
     // ======> print the results
     console.log("The data here a the view is ", blogs);
 
+    // GET all the data
     useEffect(() => {
         dispatch(getBlogList());
     }, [dispatch]);
 
-
+    // GET single data
     const handleSingleBlog = async (id) => {
         const response = await dispatch(getSingleBlog(id));
         setSingleBlog(response.payload);
       }
 
-    console.log('The single data fetch in the view is ', singleBlog);
+    // ========> print the results  
+    // console.log('The single data fetch in the view is ', singleBlog);
+
+
+    // DELETE single data
+    const handleDeleteSingleBlog = async (id) => 
+    {
+     await dispatch(deleteSingleBlog(id));
+    }
 
 
     return ( 
@@ -62,14 +71,14 @@ const BlogNote = () => {
                     <div className="col text-start">
                         <div className="row">
                             <div className="col col-4">
-                               <button className="btn btn-dark">
+                               <button className="btn btn-dark" onClick={() => handleDeleteSingleBlog(item._id)}>
                                <i class="bi bi-trash"></i>
                                </button>
                             </div>
                             <div className="col text-start">
-                                <button className="btn btn-dark"  onClick={() => handleSingleBlog(item._id)}> 
-                                <i class="bi bi-eye"></i>
-                                </button>
+                                  <button className="btn btn-dark"  onClick={() => handleSingleBlog(item._id)}> 
+                                  <i class="bi bi-eye"></i>
+                                  </button>
                             </div>
 
                         </div>
