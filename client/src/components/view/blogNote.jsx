@@ -1,19 +1,30 @@
 import { Link } from "react-router-dom";
-import { getBlogList } from "../redux/action";
+import { getBlogList, getSingleBlog } from "../redux/action";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const BlogNote = () => {
+
+    const [singleBlog, setSingleBlog] = useState();
 
     const blogs = useSelector(state => state.blog.data);
     const dispatch = useDispatch();
 
     // ======> print the results
-    // console.log("The data here a the view is ", blogs);
+    console.log("The data here a the view is ", blogs);
 
     useEffect(() => {
         dispatch(getBlogList());
     }, [dispatch]);
+
+
+    const handleSingleBlog = async (id) => {
+        const response = await dispatch(getSingleBlog(id));
+        setSingleBlog(response.payload);
+      }
+
+    console.log('The single data fetch in the view is ', singleBlog);
+
 
     return ( 
         <div className="blog-note">
@@ -56,7 +67,7 @@ const BlogNote = () => {
                                </button>
                             </div>
                             <div className="col text-start">
-                                <button className="btn btn-dark"> 
+                                <button className="btn btn-dark"  onClick={() => handleSingleBlog(item._id)}> 
                                 <i class="bi bi-eye"></i>
                                 </button>
                             </div>

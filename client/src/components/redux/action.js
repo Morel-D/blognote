@@ -24,4 +24,15 @@ export const addBlogList = createAsyncThunk('addBlogList', async (data) => {
     }
 })
 
+export const getSingleBlog = createAsyncThunk('getSingleBlog', async (id) => {
+    try {
+        const response = await axios.get('http://localhost:5000/Blog/'+id);
+        const results = await response.data;
+        console.log('Single data has been fetch in the action.js : ', results);
+        return results
+    } catch (error) {
+        console.log('Something went wrong in the action.js ', error.message);
+    }
+})
+
 

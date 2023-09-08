@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getBlogList, addBlogList } from "./action";
+import { getBlogList, addBlogList, getSingleBlog } from "./action";
 
 
 const initiialState = 
@@ -16,6 +16,7 @@ export const blogSlice = createSlice(
         name: 'blog',
         initialState: initiialState,
         extraReducers: {
+            // Get The data
             [getBlogList.pending]: (state) => 
             {
                 state.isLoading = true;
@@ -33,6 +34,8 @@ export const blogSlice = createSlice(
                 state.errorMessage = action.payload
             },
 
+            // POST The data
+        
             [addBlogList.fulfilled]: (state, action) =>
             {
                 state.isLoading = false;
@@ -44,8 +47,15 @@ export const blogSlice = createSlice(
                 state.isLoading = false;
                 state.isSuccess = false;
                 state.errorMessage = action.payload
-            }
+            },
             
+            // GET single data
+
+            [getSingleBlog.fulfilled]: (state, action) => 
+            {
+                const id = action.payload;
+                state.data.find(item => item.id === id);
+            }
         }
     }
 )
