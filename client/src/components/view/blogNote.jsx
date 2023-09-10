@@ -16,7 +16,7 @@ const BlogNote = () => {
     // GET all the data
     useEffect(() => {
         dispatch(getBlogList());
-    }, [dispatch]);
+    }, [blogs]);
 
     // GET single data
     const handleSingleBlog = async (id) => {
